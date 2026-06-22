@@ -1,0 +1,102 @@
+<!-- pages/curtain/curtain.wxml - 窗帘控制页 -->
+<view class="container">
+
+  <!-- 窗帘可视化区域 -->
+  <view class="curtain-visual">
+    <view class="window-frame">
+      <!-- 窗户背景（代表室外光线） -->
+      <view class="window-light"></view>
+      <!-- 窗帘遮罩：curtainValue 表示关闭度，0=全开，100=全关 -->
+      <view class="curtain-shade" style="width: {{curtainValue}}%;"></view>
+      <!-- 百分比叠加显示 -->
+      <view class="window-percent">
+        <text>{{curtainValue}}%</text>
+      </view>
+    </view>
+    <!-- 窗帘轨道装饰 -->
+    <view class="window-rail"></view>
+  </view>
+
+  <!-- 开合度控制卡片 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-icon">🪟</text>
+      <text class="card-title">窗帘控制</text>
+    </view>
+
+    <view class="mode-strip {{mode === 1 ? 'auto' : 'manual'}}">
+      <text>{{mode === 1 ? '自动模式：调节窗帘会自动切换为手动模式' : '手动模式：可直接调节窗帘'}}</text>
+    </view>
+
+    <view class="manual-switch-notice" wx:if="{{manualSwitchNotice}}">
+      <text>{{manualSwitchNotice}}</text>
+    </view>
+
+    <!-- 大数字显示 -->
+    <view class="percent-display">
+      <text class="percent-num">{{curtainValue}}</text>
+      <text class="percent-sign">% 关</text>
+    </view>
+
+    <!-- 滑动条 -->
+      <slider
+        min="0"
+        max="100"
+        value="{{curtainValue}}"
+        step="5"
+        activeColor="#ff7043"
+        backgroundColor="#ffe0d3"
+      block-size="24"
+      show-value="{{false}}"
+      bindchange="onSliderChange"
+      bindchanging="onSliderChanging"
+    />
+
+    <!-- 快捷按钮 -->
+    <view class="quick-btns">
+      <view class="quick-btn" bindtap="setCurtain" data-value="0">
+        <text class="btn-icon">⬜</text>
+        <text class="btn-text">全开</text>
+      </view>
+      <view class="quick-btn" bindtap="setCurtain" data-value="25">
+        <text class="btn-icon">🟫</text>
+        <text class="btn-text">25%</text>
+      </view>
+      <view class="quick-btn" bindtap="setCurtain" data-value="50">
+        <text class="btn-icon">🟨</text>
+        <text class="btn-text">50%</text>
+      </view>
+      <view class="quick-btn" bindtap="setCurtain" data-value="75">
+        <text class="btn-icon">🟩</text>
+        <text class="btn-text">75%</text>
+      </view>
+      <view class="quick-btn" bindtap="setCurtain" data-value="100">
+        <text class="btn-icon">⬛</text>
+        <text class="btn-text">全关</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作日志 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-icon">📋</text>
+      <text class="card-title">操作记录</text>
+    </view>
+    <view class="log-list" wx:if="{{logs.length > 0}}">
+      <view class="log-item" wx:for="{{logs}}" wx:key="index">
+        <text class="log-time">{{item.time}}</text>
+        <text class="log-msg">{{item.msg}}</text>
+      </view>
+    </view>
+    <view class="log-empty" wx:else>
+      <text>暂无操作记录</text>
+    </view>
+  </view>
+
+  <!-- 提示 -->
+  <view class="tip-box">
+    <text class="tip-text">滑动或点击快捷按钮后，会同时下发“手动模式 + 窗帘关闭度” | 滑动条步进 5%</text>
+  </view>
+</view>
+

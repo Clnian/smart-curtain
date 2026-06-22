@@ -1,0 +1,172 @@
+/* pages/setting/setting.wxss - 设置页样式 */
+
+/* 阈值数值 */
+.threshold-value {
+  font-size: 32rpx;
+  font-weight: 800;
+  color: #e94f37;
+}
+
+.threshold-desc {
+  font-size: 24rpx;
+  color: #a08378;
+  margin-bottom: 24rpx;
+  line-height: 1.6;
+}
+
+/* 滑动条行 */
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.slider-row slider {
+  flex: 1;
+}
+
+.slider-label {
+  font-size: 22rpx;
+  color: #a08378;
+  width: 60rpx;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.current-range {
+  text-align: center;
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: #8b6458;
+  font-weight: 600;
+}
+
+.sync-hint {
+  margin-top: 14rpx;
+  padding: 14rpx 18rpx;
+  border-radius: 18rpx;
+  background: rgba(255, 240, 217, 0.82);
+  color: #c45a35;
+  font-size: 23rpx;
+  text-align: center;
+  border: 1rpx solid rgba(233, 79, 55, 0.14);
+}
+
+/* 联动算法 */
+.algo-list {
+  margin-bottom: 20rpx;
+}
+
+.algo-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16rpx;
+}
+
+.algo-dot {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fff2bd 0%, #ffd7c8 100%);
+  color: #e94f37;
+  font-size: 22rpx;
+  font-weight: 600;
+  text-align: center;
+  line-height: 36rpx;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.algo-text {
+  font-size: 26rpx;
+  color: #46302a;
+  line-height: 36rpx;
+}
+
+.algo-note {
+  font-size: 22rpx;
+  color: #a08378;
+  line-height: 1.6;
+  padding: 16rpx;
+  background: rgba(255, 243, 214, 0.78);
+  border-radius: 18rpx;
+  border: 1rpx solid rgba(255, 173, 85, 0.18);
+}
+
+/* 操作按钮 */
+.action-row {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.action-btn {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 0;
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #e94f37 0%, #ff8a4c 100%);
+  color: #ffffff;
+  box-shadow: 0 16rpx 30rpx rgba(233, 79, 55, 0.22);
+}
+
+.save-btn:active {
+  background: #c83a27;
+}
+
+.reset-btn {
+  background: rgba(255, 255, 255, 0.78);
+  color: #df7049;
+  border: 2rpx solid rgba(223, 112, 73, 0.18);
+}
+
+.reset-btn:active {
+  background: #fff1e8;
+}
+
+.cancel-btn {
+  background: #fff1e8;
+  color: #9f5e4d;
+  border: 2rpx solid rgba(159, 94, 77, 0.16);
+}
+
+.cancel-btn:active {
+  background: #ffe3d5;
+}
+
+/* 设备按键列表 */
+.key-list {
+  padding: 0;
+}
+
+.key-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 14rpx 0;
+  border-bottom: 1rpx solid rgba(233, 79, 55, 0.08);
+}
+
+.key-item:last-child {
+  border-bottom: none;
+}
+
+.key-name {
+  font-size: 26rpx;
+  color: #46302a;
+  font-weight: 700;
+  flex-shrink: 0;
+  max-width: 300rpx;
+}
+
+.key-desc {
+  font-size: 24rpx;
+  color: #a08378;
+  text-align: right;
+  flex: 1;
+}
+

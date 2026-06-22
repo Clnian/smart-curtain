@@ -1,0 +1,28 @@
+﻿# Keil 编译输出，可由 Keil 重新生成
+**/Objects/
+**/Listings/
+
+# Keil / 调试器本机状态，不影响工程源码
+*.uvguix.*
+**/.vscode/uv4.log.lock
+
+# 本地工作区、编辑器缓存和临时日志
+.workbuddy/
+**/.workbuddy/
+.vscode/*.log
+*.bak
+*.tmp
+*.log
+Thumbs.db
+.DS_Store
+
+# 本次调试产生的临时文本，不作为工程资料提交
+fasf.txt
+g.txt
+h.txt
+报错.txt
+最新.txt
+新建 文本文档.txt
+
+# 微信开发者工具本机私有配置，可由工具重新生成
+智能窗帘小程序/project.private.config.json

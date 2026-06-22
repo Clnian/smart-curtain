@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/curtain/curtain",
+    "pages/setting/setting"
+  ],
+  "lazyCodeLoading": "requiredComponents",
+  "window": {
+    "navigationBarBackgroundColor": "#e94f37",
+    "navigationBarTitleText": "智能窗帘光温控制",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#fff0e8"
+  },
+  "tabBar": {
+    "color": "#a08378",
+    "selectedColor": "#e94f37",
+    "backgroundColor": "#fffaf0",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/tabbar/home.png",
+        "selectedIconPath": "assets/tabbar/home-active.png"
+      },
+      {
+        "pagePath": "pages/curtain/curtain",
+        "text": "窗帘",
+        "iconPath": "assets/tabbar/curtain.png",
+        "selectedIconPath": "assets/tabbar/curtain-active.png"
+      },
+      {
+        "pagePath": "pages/setting/setting",
+        "text": "设置",
+        "iconPath": "assets/tabbar/setting.png",
+        "selectedIconPath": "assets/tabbar/setting-active.png"
+      }
+    ]
+  }
+}

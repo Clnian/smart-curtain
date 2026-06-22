@@ -1,0 +1,196 @@
+/* pages/curtain/curtain.wxss - 窗帘控制页样式 */
+
+/* 窗帘可视化 */
+.curtain-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 42rpx 0 8rpx;
+}
+
+.window-frame {
+  width: 430rpx;
+  height: 500rpx;
+  border: 8rpx solid rgba(83, 68, 48, 0.72);
+  border-radius: 36rpx;
+  position: relative;
+  overflow: hidden;
+  background: #95dbff;
+  box-shadow: 0 28rpx 56rpx rgba(78, 105, 102, 0.26);
+}
+
+.window-light {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 70% 18%, rgba(255, 238, 132, 0.98) 0, rgba(255, 238, 132, 0.2) 130rpx, rgba(255, 238, 132, 0) 210rpx),
+    linear-gradient(180deg, #91d7ff 0%, #b6ecdf 58%, #4caf7b 100%);
+  opacity: 0.92;
+}
+
+.curtain-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0, rgba(255, 255, 255, 0.12) 12rpx, rgba(255, 255, 255, 0) 12rpx, rgba(255, 255, 255, 0) 34rpx),
+    linear-gradient(90deg, #5b3267 0%, #ff8f70 45%, #ffc36e 100%);
+  transition: width 0.4s ease;
+  border-right: 5rpx solid rgba(67, 38, 73, 0.55);
+  box-shadow: 12rpx 0 26rpx rgba(80, 45, 73, 0.25);
+}
+
+.window-percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48rpx;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 4rpx 16rpx rgba(41, 56, 54, 0.45);
+}
+
+.window-rail {
+  width: 480rpx;
+  height: 20rpx;
+  background: linear-gradient(90deg, #734f79, #ffc36e, #ff7043, #734f79);
+  border-radius: 999rpx;
+  margin-top: -4rpx;
+  box-shadow: 0 10rpx 22rpx rgba(98, 73, 85, 0.18);
+}
+
+/* 百分比大数字 */
+.percent-display {
+  text-align: center;
+  margin: 24rpx 0 30rpx;
+}
+
+.percent-num {
+  font-size: 88rpx;
+  font-weight: 800;
+  color: #e94f37;
+}
+
+.percent-sign {
+  font-size: 32rpx;
+  color: #a08378;
+  margin-left: 4rpx;
+}
+
+.mode-strip {
+  margin: 20rpx 0 10rpx;
+  padding: 18rpx 22rpx;
+  border-radius: 22rpx;
+  font-size: 24rpx;
+  font-weight: 700;
+  text-align: center;
+  border: 2rpx solid rgba(233, 79, 55, 0.12);
+}
+
+.mode-strip.auto {
+  color: #b04428;
+  background: linear-gradient(135deg, rgba(255, 242, 220, 0.95), rgba(255, 221, 193, 0.95));
+}
+
+.mode-strip.manual {
+  color: #7f4937;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.manual-switch-notice {
+  margin: 14rpx 0 4rpx;
+  padding: 18rpx 24rpx;
+  border-radius: 24rpx;
+  color: #ffffff;
+  font-size: 25rpx;
+  font-weight: 800;
+  text-align: center;
+  background: linear-gradient(135deg, #ff7043 0%, #e94f37 55%, #ffad55 100%);
+  box-shadow: 0 16rpx 30rpx rgba(233, 79, 55, 0.24);
+}
+
+/* 快捷按钮 */
+.quick-btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30rpx;
+  gap: 12rpx;
+}
+
+.quick-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx 0;
+  border-radius: 22rpx;
+  background: rgba(255, 255, 255, 0.78);
+  border: 2rpx solid rgba(233, 79, 55, 0.13);
+  transition: all 0.2s;
+}
+
+.quick-btn:active {
+  background: #fff3d6;
+  border-color: #ffad55;
+  transform: scale(0.95);
+}
+
+.btn-icon {
+  font-size: 32rpx;
+  margin-bottom: 6rpx;
+}
+
+.btn-text {
+  font-size: 22rpx;
+  color: #8b6458;
+  font-weight: 600;
+}
+
+/* 操作日志 */
+.log-list {
+  max-height: 400rpx;
+  overflow-y: auto;
+}
+
+.log-item {
+  display: flex;
+  padding: 12rpx 0;
+  border-bottom: 1rpx solid rgba(233, 79, 55, 0.08);
+}
+
+.log-time {
+  font-size: 24rpx;
+  color: #a08378;
+  width: 110rpx;
+  flex-shrink: 0;
+}
+
+.log-msg {
+  font-size: 26rpx;
+  color: #46302a;
+  flex: 1;
+}
+
+.log-empty {
+  text-align: center;
+  padding: 30rpx;
+  color: #b49a90;
+  font-size: 26rpx;
+}
+
+/* 底部提示 */
+.tip-box {
+  text-align: center;
+  padding: 20rpx 0 30rpx;
+}
+
+.tip-text {
+  font-size: 22rpx;
+  color: #a08378;
+}
+

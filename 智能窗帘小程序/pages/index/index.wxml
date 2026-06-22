@@ -1,0 +1,104 @@
+<!-- pages/index/index.wxml - 首页：实时环境数据仪表盘 -->
+<view class="container">
+
+  <!-- 顶部：设备在线状态 -->
+  <view class="status-bar">
+    <view class="status-dot {{online ? 'online' : 'offline'}}"></view>
+    <text class="status-text">{{online ? '设备在线' : '设备离线'}}</text>
+    <text class="update-time">更新于 {{lastUpdate}}</text>
+  </view>
+
+  <!-- 温度卡片 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-icon">🌡️</text>
+      <text class="card-title">温度</text>
+      <view class="alarm-tag {{alarmTem ? 'alarm' : ''}}">
+        {{alarmTem ? '超温告警' : '正常'}}
+      </view>
+    </view>
+    <view class="card-value">
+      <text class="value-num">{{temperature}}</text>
+      <text class="value-unit">°C</text>
+    </view>
+    <view class="value-hint" wx:if="{{alarmTem}}">
+      温度超过阈值，窗帘已自动调整
+    </view>
+  </view>
+
+  <!-- 湿度卡片 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-icon">💧</text>
+      <text class="card-title">湿度</text>
+      <view class="alarm-tag {{alarmHum ? 'alarm' : ''}}">
+        {{alarmHum ? '超湿告警' : '正常'}}
+      </view>
+    </view>
+    <view class="card-value">
+      <text class="value-num">{{humidity}}</text>
+      <text class="value-unit">%RH</text>
+    </view>
+  </view>
+
+  <!-- 光照卡片 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-icon">☀️</text>
+      <text class="card-title">光照强度</text>
+      <view class="alarm-tag {{alarmLight ? 'alarm' : ''}}">
+        {{alarmLight ? '强光告警' : '正常'}}
+      </view>
+    </view>
+    <view class="card-value">
+      <text class="value-num">{{light}}</text>
+      <text class="value-unit">lx</text>
+    </view>
+  </view>
+
+  <!-- 窗帘状态卡片 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-icon">🪟</text>
+      <text class="card-title">窗帘状态</text>
+      <text class="curtain-mode">{{mode === 1 ? '自动' : '手动'}}</text>
+    </view>
+    <view class="curtain-info">
+      <view class="curtain-bar-bg">
+        <view class="curtain-bar-fill" style="width: {{curtainPos}}%;"></view>
+      </view>
+      <text class="curtain-percent">{{curtainPos}}%关</text>
+    </view>
+    <view class="curtain-desc">
+      {{curtainPos == 0 ? '窗帘已全开' : curtainPos == 100 ? '窗帘已全关' : '窗帘部分关闭'}}
+      （{{mode === 1 ? '自动联动控制中' : '手动控制中'}}）
+    </view>
+  </view>
+
+  <!-- 运行模式切换 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-icon">⚙️</text>
+      <text class="card-title">运行模式</text>
+    </view>
+    <view class="mode-desc">
+      自动模式：根据温度和光照自动开合窗帘
+    </view>
+    <view class="mode-row">
+      <view class="mode-btn {{mode === 1 ? 'active' : ''}}" bindtap="setMode" data-mode="1">
+        <text class="mode-icon">🔄</text>
+        <text>自动模式</text>
+      </view>
+      <view class="mode-btn {{mode === 0 ? 'active' : ''}}" bindtap="setMode" data-mode="0">
+        <text class="mode-icon">🖐️</text>
+        <text>手动模式</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部 -->
+  <view class="footer-tip">
+    <text>数据每 3 秒自动刷新 | 智能窗帘光温控制系统</text>
+  </view>
+</view>
+

@@ -1,0 +1,132 @@
+<!-- pages/setting/setting.wxml - 参数设置页 -->
+<view class="container">
+
+  <!-- 温度阈值 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-icon">🌡️</text>
+      <text class="card-title">温度阈值</text>
+      <text class="threshold-value">{{temThreshold}}℃</text>
+    </view>
+    <view class="threshold-desc">
+      温度超过此值时进入夏季防晒模式，低于此值进入冬季采暖模式
+    </view>
+    <view class="slider-row">
+      <text class="slider-label">-20℃</text>
+      <slider
+        min="-20"
+        max="60"
+        value="{{temThreshold}}"
+        step="1"
+        activeColor="#ff7a59"
+        backgroundColor="#ffe6dc"
+        block-size="24"
+        bindchange="onTemChange"
+      />
+      <text class="slider-label">60℃</text>
+    </view>
+    <view class="current-range">
+      当前范围：{{temThreshold <= 15 ? '偏低温' : temThreshold >= 35 ? '偏高温' : '适中'}}
+    </view>
+    <view class="sync-hint" wx:if="{{dirty}}">
+      设备当前：{{deviceTemThreshold}}℃，正在编辑：{{temThreshold}}℃
+    </view>
+  </view>
+
+  <!-- 光照阈值 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-icon">☀️</text>
+      <text class="card-title">光照阈值</text>
+      <text class="threshold-value">{{lightThreshold}} lx</text>
+    </view>
+    <view class="threshold-desc">
+      光照超过此值时窗帘将根据温度自动开合（夏季关窗防晒，冬季开窗采暖）
+    </view>
+    <view class="slider-row">
+      <text class="slider-label">0</text>
+      <slider
+        min="0"
+        max="1000"
+        value="{{lightThreshold}}"
+        step="50"
+        activeColor="#ffb84d"
+        backgroundColor="#fff2c9"
+        block-size="24"
+        bindchange="onLightChange"
+      />
+      <text class="slider-label">1000</text>
+    </view>
+    <view class="current-range">
+      当前范围：{{lightThreshold <= 200 ? '低光照' : lightThreshold >= 700 ? '高光照' : '中等'}}
+    </view>
+    <view class="sync-hint" wx:if="{{dirty}}">
+      设备当前：{{deviceLightThreshold}} lx，正在编辑：{{lightThreshold}} lx
+    </view>
+  </view>
+
+  <!-- 联动算法说明 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-icon">🧠</text>
+      <text class="card-title">联动算法说明</text>
+    </view>
+    <view class="algo-list">
+      <view class="algo-item" wx:for="{{algorithmDesc}}" wx:key="index">
+        <text class="algo-dot">{{index + 1}}</text>
+        <text class="algo-text">{{item}}</text>
+      </view>
+    </view>
+    <view class="algo-note">
+      * 迟滞死区固定为 ±100 lx，防止光照在阈值附近波动导致电机反复动作
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-row">
+    <view class="action-btn save-btn" bindtap="saveSettings">
+      <text>{{setting ? '保存中...' : dirty ? '保存修改' : '保存设置'}}</text>
+    </view>
+    <view class="action-btn cancel-btn" wx:if="{{dirty && !setting}}" bindtap="discardChanges">
+      <text>放弃修改</text>
+    </view>
+    <view class="action-btn reset-btn" bindtap="resetDefaults">
+      <text>恢复默认</text>
+    </view>
+  </view>
+
+  <!-- 设备按键说明 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-icon">📱</text>
+      <text class="card-title">设备按键操作</text>
+    </view>
+    <view class="key-list">
+      <view class="key-item">
+        <text class="key-name">KEY4 短按</text>
+        <text class="key-desc">切换 OLED 页面（1→2→3→1）</text>
+      </view>
+      <view class="key-item">
+        <text class="key-name">KEY4 长按</text>
+        <text class="key-desc">切换自动/手动模式</text>
+      </view>
+      <view class="key-item">
+        <text class="key-name">KEY1（第3页）</text>
+        <text class="key-desc">切换选中参数（温度/光照）</text>
+      </view>
+      <view class="key-item">
+        <text class="key-name">KEY2（第3页）</text>
+        <text class="key-desc">减小选中参数值</text>
+      </view>
+      <view class="key-item">
+        <text class="key-name">KEY3（第3页）</text>
+        <text class="key-desc">增大选中参数值</text>
+      </view>
+      <view class="key-item">
+        <text class="key-name">KEY2/KEY3（第1/2页，手动模式）</text>
+        <text class="key-desc">控制窗帘开关/停止</text>
+      </view>
+    </view>
+  </view>
+
+</view>
